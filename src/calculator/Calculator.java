@@ -1,14 +1,14 @@
-package calculator;
+package test;
 
-import java.io.IOException; // Обработка исключений
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.BufferedReader; // Принимает поток данных
-import java.lang.RuntimeException; // Ипортирую для обработки исключений
+import java.io.BufferedReader;
+import java.lang.RuntimeException;
 
 public class Calculator {
-    private static Number calculate(Number a, String operation, Number b) {
+    private static Number calculate(Number a, String op, Number b) {
         if (a.type.equals(b.type)) {
-            switch (operation) {
+            switch (op) {
                 case "+":
                     return a.add(b);
                 case "-":
@@ -18,8 +18,7 @@ public class Calculator {
                 case "/":
                     return a.div(b);
                 default:
-                    throw new RuntimeException("Неизвестная операция"); // Здесь обозначил все типы операций, которые
-                    // могут производиться в нашем калькуляторе
+                    throw new RuntimeException("Неизвестная операция");
             }
         } else {
             throw new RuntimeException("Разные типы цифр");
@@ -27,10 +26,10 @@ public class Calculator {
     }
 
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // использую для потока
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String str;
 
-        while (true) { // запуск вечного цикла, чтобы можно было делать ввод пока не поймаем исключение
+        while (true) {
             try {
                 str = reader.readLine();
             } catch (IOException e) {

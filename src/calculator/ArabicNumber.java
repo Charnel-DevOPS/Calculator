@@ -1,14 +1,14 @@
-package calculator;
+package test;
 
-class ArabicNumber extends Number { //расширяемся от абстрактного класса Number
+class ArabicNumber extends Number {
     ArabicNumber(String number) {
-        this.number = Integer.parseInt(number); //получаем арабские цифры
-        type = "arabic"; // определяем тип для арабских цифр
+        this.number = Integer.parseInt(number);
+        type = "arabic";
     }
 
     ArabicNumber(int number) {
         this.number = number;
-        type = "arabic"; //переводим в int значение String типа arabic
+        type = "arabic";
     }
 
     @Override

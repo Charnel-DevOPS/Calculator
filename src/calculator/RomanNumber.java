@@ -1,24 +1,26 @@
-package calculator;
+package test;
 
 import java.util.TreeMap;
 import java.lang.RuntimeException;
 
 public class RomanNumber extends Number {
-    private final static TreeMap<Integer, String> tree = new TreeMap<>(); //коллекция из
+    private final static TreeMap<Integer, String> map = new TreeMap<>();
 
     static {
-
-        tree.put(10, "X");
-        tree.put(9, "IX");
-        tree.put(5, "V");
-        tree.put(4, "IV");
-        tree.put(1, "I");
-        tree.put(0, "0");
+        map.put(100, "C");
+        map.put(90, "XC");
+        map.put(50, "L");
+        map.put(40, "XL");
+        map.put(10, "X");
+        map.put(9, "IX");
+        map.put(5, "V");
+        map.put(4, "IV");
+        map.put(1, "I");
+        map.put(0, "0");
     }
 
     RomanNumber(String number) {
-        if (number.matches("^(X|IX|IV|V?I{0,3})$")) { // проверяем совпадение вводимых данных,
-                                                            //передаем аргумент типа String
+        if (number.matches("^(X|IX|IV|V?I{0,3})$")) {
             this.number = toArabic(number);
             type = "roman";
         } else {
@@ -26,17 +28,17 @@ public class RomanNumber extends Number {
         }
     }
 
-    RomanNumber(int number) {           //передаем значение типа String в int
+    RomanNumber(int number) {
         this.number = number;
         type = "roman";
     }
 
     private static String toRoman(int number) {
-        int l =  tree.floorKey(number);
+        int l =  map.floorKey(number);
         if (number == l) {
-            return tree.get(number);
+            return map.get(number);
         }
-        return tree.get(l) + toRoman(number-l);
+        return map.get(l) + toRoman(number-l);
     }
 
     private static int toArabic(String roman) {
